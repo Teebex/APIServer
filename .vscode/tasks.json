@@ -1,0 +1,22 @@
+/* 
+    {
+    // See https://go.microsoft.com/fwlink/?linkid=733558
+    "version": "0.1.0",
+    "command": "npm", 
+    "isShellCommand": true,
+    "tasks": [{
+        "taskName": "install",
+        "args": ["install"]
+    }]
+}
+*/
+{
+    // See http://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "0.1.0",
+    "command": "tsc",
+    "isShellCommand": true,
+    "args": ["-p", "."],
+    "showOutput": "silent",
+    "problemMatcher": "$tsc"
+}

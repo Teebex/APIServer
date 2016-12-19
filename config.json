@@ -1,0 +1,17 @@
+{
+    "http": {
+        "port": 8080
+    },
+    "mysql": {
+        "host": "192.168.1.20",
+        "user": "sqladmin",
+        "password": "12345",
+        "database": "dev",
+        "debug": false
+    },
+    "logs": {
+        "directory": "",
+        "level": "info"
+    }
+
+}

@@ -1,0 +1,21 @@
+Le serveur est basé sur expressjs.
+
+Pour initier un projet, depuis Terminal :
+.Créer le répertoire et se mettre dedans
+.npm init
+.entry point: (apiserver.js)
+.npm install express --save
+.npm install express
+
+Créer le fichier jsconfig.json pour exclure le répertoire node_modules de l'analyse intellisense
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs"
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
+
+

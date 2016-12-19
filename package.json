@@ -1,0 +1,20 @@
+{
+    "name": "apiserver",
+    "version": "1.0.0",
+    "description": "My First Web Server",
+    "main": "APIserver.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Teebex",
+    "license": "ISC",
+    "dependencies": {
+        "api-easy": "^0.4.0",
+        "body-parser": "~1.0.2",
+        "express": "^4.14.0",
+        "morgan": "~1.0.0",
+        "mysql": "~2.12.0",
+        "nconf": "^0.8.4",
+        "winston": "^2.3.0"
+    }
+}
