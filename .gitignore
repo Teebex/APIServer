@@ -1,5 +1,4 @@
 dist
 node_modules
 tuto
-logs
-logs/logs.log 
+logs 
