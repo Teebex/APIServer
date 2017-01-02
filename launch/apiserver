@@ -1,0 +1,74 @@
+#!/bin/bash
+#
+# apiserver start/stop service
+#
+### BEGIN INIT INFO
+# Provides: 		apiserver
+# Required-Start: 	$local_fs $remote_fs
+# Required-Stop: 	$local_fs $remote_fs
+# Default-Start: 	2 3 4 5
+# Default-Stop: 	0 1 6
+# Short-Description: 	start/stop Node.JS script
+# Description: 		start node script in an other screen
+#
+#			Install
+# 			save under /etc/init.d/apiserver
+# 			chmod +x /etc/init.d/apiserver
+# 			add to autostart with $ sudo update-rc.d apiserver defaults
+#
+# 			screen needed (sudo apt-get install screen)
+### END INIT INFO
+
+MYNAME=/etc/init.d/apiserver
+
+case "$1" in
+start)
+	EXITSTATUS=0
+	# check if started
+	if screen -list | grep -q APIServerConsole ; then
+		echo "apiserver : APIServerConsole is already running"
+	else
+		# create console
+		screen -dm -S APIServerConsole
+		# send commands
+		screen -p 0 -S APIServerConsole -X stuff "cd /home/pi/APIServer/$(printf \\r)"
+		screen -p 0 -S APIServerConsole -X stuff "/usr/bin/node apiserver.js$(printf \\r)"
+		# wait for start
+		sleep 3 
+		# check if started
+		if screen -list | grep -q APIServerConsole ; then
+			echo "apiserver : APIServerConsole started"
+		else
+			echo "apiserver : APIServerConsole NOT started"
+		fi
+	fi
+	;;
+stop)
+	EXITSTATUS=0
+	# try to kill console
+	screen -X -S APIServerConsole kill
+	# wait for
+	sleep 3
+	# check
+	if screen -list | grep -q APIServerConsole ; then
+		echo "apiserver : error - APIServerConsole still running"
+	else
+		echo "apiserver : APIServerConsole stopped"
+	fi
+	;;
+
+reload|restart)
+	EXITSTATUS=0
+	$0 stop || EXITSTATUS=1
+	$0 start || EXITSTATUS=1
+	exit $EXITSTATUS
+	;;
+
+*)
+	echo "Usage: $MYNAME {start|stop|restart}"
+	exit 3
+	;;
+
+esac
+
+exit 0

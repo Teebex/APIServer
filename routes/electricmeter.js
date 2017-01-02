@@ -20,7 +20,7 @@ router.use(function logquery(req, res, next) {
 
 
 // Create new record electricmeter cumulativevalue
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
     logger.debug("post", req.originalUrl);
     // Params are passed throught query (Postman) or body (IPX)
     var ID = req.query.ID || req.body.ID;
@@ -60,7 +60,7 @@ router.post('/', function(req, res, next) {
 })
 
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     var ID = req.query.ID || req.body.ID;
 
     // ID Check

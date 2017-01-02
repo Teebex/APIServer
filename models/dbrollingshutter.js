@@ -5,7 +5,7 @@ exports.rollingshutter = {
     // create a record of position for a shutter
     create: function(DBError, ID, position, timestamp) {
         logger.debug('DBAdding ID:', ID, " position:", position, " timestamp:", timestamp);
-        pool.query('INSERT INTO rollershutter SET ID=?, position=?, timestamp=?', [ID, position, timestamp], function(err, rows) {
+        pool.query('INSERT INTO rollershutter SET ID=?, position=?, timestamp=?', [ID, position, timestamp], function(err) {
             if (err) {
                 logger.error("Insert statement error:", err.code, ' stack:', err);
                 DBError(true);

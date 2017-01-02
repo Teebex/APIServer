@@ -15,7 +15,7 @@ exports.electricmeter = {
         var tsminutes = timestamp.getMinutes();
         var tsdate = new Date(timestamp.getFullYear(), timestamp.getMonth(), timestamp.getDate());
 
-        pool.query('insert INTO electricmeter SET ID = ? , cumulativevalue = ? ,timestamp = ? , tsdate = ? , tshour = ? , tsminute = ?', [ID, cumulativevalue, timestamp, tsdate, tshours, tsminutes], function(err, rows) {
+        pool.query('insert INTO electricmeter SET ID = ? , cumulativevalue = ? ,timestamp = ? , tsdate = ? , tshour = ? , tsminute = ?', [ID, cumulativevalue, timestamp, tsdate, tshours, tsminutes], function(err) {
             if (err) {
                 logger.error("Insert statement error:", err.code, ' stack:', err);
                 DBError(true);

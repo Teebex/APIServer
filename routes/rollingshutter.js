@@ -43,7 +43,7 @@ router.use(function logquery(req, res, next) {
 
 
 // Create new record Shutter status
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
     logger.debug("post");
     // Params are passed throught query (Postman) or body (IPX)
     var ID = req.query.ID || req.body.ID;
@@ -84,7 +84,7 @@ router.post('/', function(req, res, next) {
     DB.rollingshutter.create(DBError, ID, position, utils.IPXstrDateDecode(timestamp));
 })
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     var ID = req.query.ID || req.body.ID;
     logger.debug('get', ID);
     DB.rollingshutter.fetchAll(function(err, result) {

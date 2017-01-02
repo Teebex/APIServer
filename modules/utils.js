@@ -17,10 +17,10 @@ var IPXstrDateDecode = function(strdate) {
         // Default value
         ts = new Date();
         // IPX timestamp ? JJ/MM/AA-HH:MM:SS
-        datetimeparts = strdate.split("-");
+        var datetimeparts = strdate.split("-");
         if (datetimeparts.length == 2) {
-            dateparts = datetimeparts[0].split("/");
-            timeparts = datetimeparts[1].split(":");
+            var dateparts = datetimeparts[0].split("/");
+            var timeparts = datetimeparts[1].split(":");
             if ((dateparts.length == 3) && (timeparts.length == 3)) {
                 var tsyear = 2000 + eval(dateparts[2]);
                 var tsmonth = eval(dateparts[1]);
